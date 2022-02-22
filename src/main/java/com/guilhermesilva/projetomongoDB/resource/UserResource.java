@@ -21,7 +21,6 @@ public class UserResource {
 	public ResponseEntity<List<User>> findAll(){
 		
 		List<User> list = userService.findAll();
-		
 		return ResponseEntity.ok().body(list);
 	}
 }
