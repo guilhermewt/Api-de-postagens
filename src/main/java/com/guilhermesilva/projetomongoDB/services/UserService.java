@@ -33,4 +33,9 @@ public class UserService {
 	public void insert(User obj) {
 		userRepository.save(obj);
 	}
+	
+	public void delete(String id) {
+		findById(id);
+		userRepository.deleteById(id);
+	}
 }
