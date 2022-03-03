@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import com.guilhermesilva.projetomongoDB.domain.Post;
 import com.guilhermesilva.projetomongoDB.domain.User;
 import com.guilhermesilva.projetomongoDB.dto.AuthorDTO;
+import com.guilhermesilva.projetomongoDB.dto.CommentDTO;
 import com.guilhermesilva.projetomongoDB.repository.PostRepository;
 import com.guilhermesilva.projetomongoDB.repository.UserRepository;
 
@@ -45,6 +46,15 @@ public class testConfig implements CommandLineRunner{
 		maria.getPosts().addAll(Arrays.asList(post1,post2));
 		
 		userRepository.save(maria);
+		
+		CommentDTO c1 = new CommentDTO("boa viajem cara!", sdf.parse("23/02/2022"), new AuthorDTO(alex));
+		CommentDTO c2 = new CommentDTO("volte logo!", sdf.parse("24/02/2022"), new AuthorDTO(bob));
+		CommentDTO c3 = new CommentDTO("vai trampa hoje?", sdf.parse("30/05/2022"),new AuthorDTO(maria));
+		
+		post1.getComments().addAll(Arrays.asList(c1,c2));
+		post2.getComments().add(c3);
+		
+		postRepository.saveAll(Arrays.asList(post1,post2));
 	}
 	
 	
