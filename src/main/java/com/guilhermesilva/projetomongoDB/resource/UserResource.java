@@ -1,3 +1,4 @@
+
 package com.guilhermesilva.projetomongoDB.resource;
 
 import java.net.URI;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.guilhermesilva.projetomongoDB.domain.Post;
 import com.guilhermesilva.projetomongoDB.domain.User;
 import com.guilhermesilva.projetomongoDB.dto.UserDTO;
 import com.guilhermesilva.projetomongoDB.services.UserService;
@@ -23,7 +25,6 @@ public class UserResource {
 
 	@Autowired
 	private UserService userService;
-	
 	
 	@RequestMapping
 	public ResponseEntity<List<UserDTO>> findAll(){
@@ -65,6 +66,13 @@ public class UserResource {
 		obj.setId(id);
 		userService.update(obj);
 		return ResponseEntity.noContent().build();
+	}
+
+	@RequestMapping(value = "/{id}/posts",method = RequestMethod.GET)
+	public ResponseEntity<List<Post>> findByPost(@PathVariable String id){
+		User obj = userService.findById(id);
+	    return ResponseEntity.ok().body(obj.getPosts());
+		
 	}
 	
 }
