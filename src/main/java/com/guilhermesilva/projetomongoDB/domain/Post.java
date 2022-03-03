@@ -13,7 +13,7 @@ import com.guilhermesilva.projetomongoDB.dto.AuthorDTO;
 public class Post implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	private String id;
 	private Date date;
@@ -22,8 +22,7 @@ public class Post implements Serializable{
 	
 	private AuthorDTO author;
 	
-	public Post() {
-	}
+	public Post() {}
 
 	public Post(String id, Date date, String title, String body,AuthorDTO author) {
 		super();
