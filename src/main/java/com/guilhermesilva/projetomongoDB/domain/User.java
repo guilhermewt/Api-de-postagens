@@ -13,7 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class User implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	private String id;
 	private String name;
@@ -80,7 +80,5 @@ public class User implements Serializable{
 		User other = (User) obj;
 		return Objects.equals(email, other.email) && Objects.equals(id, other.id) && Objects.equals(name, other.name);
 	}
-	
-	
 
 }

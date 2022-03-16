@@ -1,5 +1,6 @@
 package com.guilhermesilva.projetomongoDB.services;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,15 +15,19 @@ import com.guilhermesilva.projetomongoDB.services.exceptions.ObjectNotFound;
 public class PostService {
 	
 	@Autowired
-	private PostRepository postRepository;;
+	private PostRepository postRepository;
 	
 	public Post findById(String id) {
 		Optional<Post> obj = postRepository.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFound("object not found"));
 	}
+
 	public List<Post> searchTitle(String text){
-	  List<Post> list = postRepository.searchTitle(text);
-	  return list;
+		return postRepository.findBySearchTitle(text);
 	}
-		
+	
+	public List<Post> searchFull(String text, Date minDate, Date maxDate){
+		maxDate = new Date(maxDate.getTime() + 24 * 60 * 60 * 1000);
+		return postRepository.findBySearchFull(text, minDate, maxDate);
+	}
 }
