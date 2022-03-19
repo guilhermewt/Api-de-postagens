@@ -9,8 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.guilhermesilva.projetomongoDB.domain.Post;
 @Repository
-public interface PostRepository extends MongoRepository<Post, String>{
-	
+public interface PostRepository extends MongoRepository<Post, String>{	
 
  List<Post> findByTitleContainingIgnoreCase(String text);
 

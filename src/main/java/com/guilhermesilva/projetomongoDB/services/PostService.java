@@ -17,6 +17,7 @@ public class PostService {
 	@Autowired
 	private PostRepository postRepository;
 	
+	
 	public Post findById(String id) {
 		Optional<Post> obj = postRepository.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFound("object not found"));
